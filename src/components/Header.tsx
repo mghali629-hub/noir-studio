@@ -1,0 +1,107 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { ShoppingBag } from 'lucide-react';
+
+export function Header() {
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: '/', label: 'Editorial' },
+    { href: '/about', label: 'Maison Story' },
+    { href: '/shop', label: 'All Garments' },
+    { href: '/shop/outerwear', label: 'Outerwear' },
+    { href: '/shop/knitwear', label: 'Knitwear' },
+    { href: '/shop/accessories', label: 'Leather Goods' },
+    { href: '/shop/new-arrivals', label: 'New Arrivals' },
+    { href: '/lookbook', label: 'Lookbook' },
+    { href: '/lookbook/autumn-winter-2026', label: 'AW26 Campaign' },
+    { href: '/cart', label: 'Cart' },
+    { href: '/wishlist', label: 'Wishlist' },
+    { href: '/checkout', label: 'Checkout' },
+    { href: '/orders', label: 'Order History' },
+    { href: '/stores', label: 'Flagships' },
+    { href: '/size-guide', label: 'Size Guide' },
+    { href: '/sustainability', label: 'Ethical Wool' },
+    { href: '/blog', label: 'Fashion Journal' },
+    { href: '/faq', label: 'Care & Shipping' },
+  ];
+
+  return (
+    <header className="sticky top-0 z-40 bg-black/90 backdrop-blur-xl border-b border-zinc-800 font-mono">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-zinc-100 flex items-center justify-center text-black font-extrabold shadow-lg">
+            <ShoppingBag className="w-6 h-6" />
+          </div>
+          <div>
+            <span className="text-xl font-black tracking-[0.25em] text-white block uppercase">NOIR STUDIO</span>
+            <span className="text-[9px] tracking-[0.3em] text-zinc-400 font-sans font-semibold uppercase block -mt-1">Haute Couture</span>
+          </div>
+        </Link>
+
+        <nav className="hidden lg:flex items-center gap-4 text-xs font-sans font-medium text-zinc-300 overflow-x-auto py-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`transition-colors whitespace-nowrap py-1 ${pathname === link.href ? 'text-white border-b-2 border-white font-bold' : 'hover:text-white'}`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        <Link
+          href="/cart"
+          className="font-sans px-4 py-2 rounded-xl bg-zinc-100 text-black font-bold text-[11px] uppercase tracking-wider shadow-lg transition-all shrink-0"
+        >
+          Cart (1)
+        </Link>
+      </div>
+    </header>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="bg-black border-t border-zinc-900 py-12 text-zinc-400 text-xs font-mono">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 text-white font-bold text-base tracking-widest font-sans">
+            <ShoppingBag className="w-5 h-5 text-white" /> NOIR STUDIO
+          </div>
+          <p className="text-zinc-500 text-xs leading-relaxed font-sans">
+            Minimalist silhouette architecture, Japanese raw selvedge, and European cashmere.
+          </p>
+        </div>
+        <div>
+          <h4 className="text-white font-bold mb-3 uppercase text-xs tracking-wider font-sans">Collections</h4>
+          <ul className="space-y-2">
+            <li><Link href="/shop/outerwear" className="hover:text-white">Tailored Trench Coats</Link></li>
+            <li><Link href="/shop/knitwear" className="hover:text-white">Heavy Cashmere Sweaters</Link></li>
+            <li><Link href="/shop/accessories" className="hover:text-white">Full-Grain Leather Bags</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-white font-bold mb-3 uppercase text-xs tracking-wider font-sans">Client Relations</h4>
+          <ul className="space-y-2">
+            <li><Link href="/orders" className="hover:text-white">Order Tracking</Link></li>
+            <li><Link href="/stores" className="hover:text-white">Flagship Boutiques</Link></li>
+            <li><Link href="/size-guide" className="hover:text-white">Tailoring & Measurements</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-white font-bold mb-3 uppercase text-xs tracking-wider font-sans">Private Styling Desk</h4>
+          <p className="text-zinc-500 font-sans">Paris / Tokyo Concierge:</p>
+          <p className="text-white font-bold mt-1 text-sm font-sans">concierge@noirstudio.com</p>
+        </div>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-zinc-950 text-center text-zinc-600 text-[11px] font-sans">
+        © 2026 Noir Studio Paris. All rights reserved.
+      </div>
+    </footer>
+  );
+}

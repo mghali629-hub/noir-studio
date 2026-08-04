@@ -1,0 +1,59 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  category    String
+  price       Float
+  image       String
+  description String
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  customer    String
+  email       String
+  total       Float
+  status      String   @default("PROCESSING")
+  createdAt   DateTime @default(now())
+}
+
+model CartItem {
+  id        Int    @id @default(autoincrement())
+  productId Int
+  quantity  Int
+  size      String
+}
+
+model WishlistItem {
+  id        Int @id @default(autoincrement())
+  productId Int
+}
+
+model Lookbook {
+  id          Int    @id @default(autoincrement())
+  season      String
+  title       String
+  image       String
+  description String
+}
+
+model Collection {
+  id    Int    @id @default(autoincrement())
+  name  String
+  image String
+}
+
+model StoreLocation {
+  id      Int    @id @default(autoincrement())
+  city    String
+  address String
+  hours   String
+}
