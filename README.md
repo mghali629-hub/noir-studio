@@ -1,11 +1,11 @@
-﻿# 👔 Noir Studio — Minimalist Luxury E-Commerce Platform
+﻿# 📐 Noir Studio — Modernist Architecture & Creative Studio Portfolio
 
-Contemporary luxury fashion house web application featuring seasonal lookbooks, e-commerce storefront, shopping cart, checkout, and order tracking.
+Minimalist, high-end architecture and interior design portfolio highlighting award-winning projects, spatial concepts, and client inquiries.
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript & React 18
-- **Styling**: TailwindCSS
+- **Styling**: TailwindCSS & Lucide Icons
 - **Database**: Prisma ORM & SQLite
 
 ## 🚀 Quick Start
@@ -14,6 +14,7 @@ npm install
 npx prisma db push
 npm run db:seed
 npm run dev
-``n
+`
+
 ## 📄 License
 MIT License.
